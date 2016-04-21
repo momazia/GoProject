@@ -1,0 +1,242 @@
+html {
+	font-size: 60%;
+}
+
+html, body, header, main, section, article, footer, div, a, ul, li, h1,
+	h2, h3, p {
+	/* simple reset - resets browser's default styling */
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	/* remove underline on hyperlinks */
+	text-decoration: none;
+}
+
+li {
+	/* remove bullets on lists */
+	list-style: none;
+}
+
+/* these elements will take up the whole page above the fold */
+html, body, #aboveTheFold {
+	height: 100%;
+}
+
+#aboveTheFold {
+	display: flex;
+	flex-direction: column;
+}
+
+#title {
+	flex-grow: 1;
+	align-self:stretch;
+	background-image: url("../img/server.jpg");
+}
+
+header {
+	font-family: 'Roboto', sans-serif;
+	color: white;
+	top: 0;
+	width: 100%;
+	height: 6rem;
+	background-color: #000000;
+	display: flex;
+	align-items: center;
+}
+
+#logo {
+	height: 100%;
+	flex-grow: 1;
+	color: white;
+	font-size: 3rem;
+	text-transform: uppercase;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#logo:hover {
+	color: #c0c0c0;
+}
+
+/* disable menu in header */
+/* on small devices, menu is displayed below the fold */
+/* nav desktop (nd) */
+.nd {
+	display: none;
+}
+
+#developers {
+	font-family: 'Roboto Slab', serif;
+	font-size: 1.5rem;
+	font-weight: 300;
+	margin: 5px;
+}
+#developers h1 {
+	font-size: 2.5rem;
+	text-align: center;
+}
+#developers img {
+    border-radius: 50%;
+    max-width: 100%;
+    max-height: 100%;
+}
+#item {
+    margin: 15px;
+    width: 200px;
+}
+#developers p {
+	text-align: center;
+	padding: 10px;
+}
+
+#items {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#img_container {
+	width: 100px;
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* CALL TO ACTION (cta) */
+#cta {
+	/* set the height of the cta container */
+	height: 170px;
+	/* set the color of the cta container */
+	background-color: #f5f5f5;
+	/* center text and button containers */
+	/*      #cta-txt, #cta-btn */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#cta-txt {
+	/* format text */
+	font-family: 'Roboto Slab', serif;
+	font-weight: 300;
+	font-size: 3.5rem;
+	letter-spacing: 2px;
+	color: #333;
+	/* center text old fashioned-way */
+	text-align: center;
+}
+
+#cta-btn {
+	/* button's width */
+	width: 20rem;
+	/* button's height */
+	height: 5rem;
+	margin: 1.3rem 0;
+	/* format text */
+	font-family: 'Roboto Slab', serif;
+	font-weight: 300;
+	line-height: 1;
+	/* format button */
+	background-color: #333;
+	border-radius: 5px;
+	/* center child anchor element */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#cta-btn a {
+	/* make a large touch target */
+	/* expand the anchor element to fill height */
+	height: 100%;
+	/* make a large touch target */
+	/* expand the anchor element to fill width along primary axis ( horizontally ) */
+	flex-grow: 1;
+	/* format font */
+	color: #fff;
+	font-size: 1.8rem;
+	font-weight: 300;
+	/* format anchor dimsions match the containing h2 element #cta-btn */
+	border-radius: 5px;
+	/* center the text */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#cta-btn a:hover {
+	background-color: #0ebfe9;
+}
+
+/* ------------------------------------------- */
+/* BELOW THE FOLD (btf) */
+/* ------------------------------------------- */
+
+/* nav mobile (nm) */
+.nm {
+	display: flex;
+	flex-direction: column;
+	background: deepskyblue;
+}
+
+.nm li {
+	/* dimensions */
+	width: 100%;
+	height: 4.5rem;
+	/* border */
+	border-top: 1px solid rgba(255, 255, 255, 0.3);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	/* child elements positioning */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nm li a {
+	/* make a large touch target */
+	/* expand the anchor element to fill height */
+	height: 100%;
+	/* make a large touch target */
+	/* expand the anchor element to fill width along primary axis ( horizontally ) */
+	flex-grow: 1;
+	/* font format */
+	color: white;
+	font-size: 1.75rem;
+	letter-spacing: 1px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Roboto', sans-serif;
+	/* child elements positioning */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nm li:hover {
+	background: royalblue;
+}
+
+.nm li:last-child {
+	border-bottom: none;
+}
+
+footer {
+	height: 70px;
+	background-color: #333;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+footer p {
+	color: #999;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+	text-align: center;
+}

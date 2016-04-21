@@ -5,13 +5,6 @@
     display: none;
 }
 
-/* ABOVE THE FOLD */
-/* rulesets to show certain content above the fold */
-
-#hero-img {
-    background-image: url("https://console.cloud.google.com/m/cloudstorage/b/gotraining-1271.appspot.com/o/img/adventure-lg.jpg");
-}
-
 /* HEADER */
 
 header {
@@ -19,8 +12,6 @@ header {
     /*
     increase the height of the header area
     this is necessary to contain both the logo and nav
-                            THE ENDLESS JOURNEY
-                SPONSORS   MUSIC   PICTURES   MAP   BLOG
     */
     height: 8.5rem;
 
@@ -113,11 +104,11 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #ffffff;
 }
 
 .nd li a:hover {
-    color: #0266C8;
-    background-color: #ffffe0;
+    background-color: #0ebfe9;
 }
 
 /* ------------------------------------------- */

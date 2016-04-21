@@ -24,3 +24,8 @@ header {
 
     height: 100%;
 }
+
+
+#items {
+    flex-direction: row;
+}
