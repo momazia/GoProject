@@ -12,7 +12,18 @@ func init() {
 	http.Handle("/static/", http.StripPrefix("/static", http.FileServer(http.Dir("./static"))))
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/login", loginHandler)
+	http.HandleFunc("/signup", signupHandler)
 }
+
+// Signup handler
+func signupHandler(res http.ResponseWriter, req *http.Request) {
+
+	//Parsing the template
+	tpl := template.Must(template.ParseFiles("signup.html"))
+	err := tpl.Execute(res, nil)
+	logError(err)
+}
+
 // Login handler
 func loginHandler(res http.ResponseWriter, req *http.Request) {
 
