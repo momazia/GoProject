@@ -31,7 +31,7 @@ html, body, #aboveTheFold {
 
 #title {
 	flex-grow: 1;
-	align-self:stretch;
+	align-self: stretch;
 	background-image: url("../img/server.jpg");
 }
 
@@ -41,7 +41,7 @@ header {
 	top: 0;
 	width: 100%;
 	height: 6rem;
-	background-color: #000000;
+	background-color: #333;
 	display: flex;
 	align-items: center;
 }
@@ -72,21 +72,25 @@ header {
 	font-family: 'Roboto Slab', serif;
 	font-size: 1.5rem;
 	font-weight: 300;
-	margin: 5px;
+	background-color: #f5f5f5;
 }
+
 #developers h1 {
 	font-size: 2.5rem;
 	text-align: center;
 }
+
 #developers img {
-    border-radius: 50%;
-    max-width: 100%;
-    max-height: 100%;
+	border-radius: 50%;
+	max-width: 100%;
+	max-height: 100%;
 }
+
 #item {
-    margin: 15px;
-    width: 200px;
+	margin: 15px;
+	width: 200px;
 }
+
 #developers p {
 	text-align: center;
 	padding: 10px;
@@ -94,82 +98,59 @@ header {
 
 #items {
 	display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-#img_container {
-	width: 100px;
-    height: 100px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* CALL TO ACTION (cta) */
-#cta {
-	/* set the height of the cta container */
-	height: 170px;
-	/* set the color of the cta container */
-	background-color: #f5f5f5;
-	/* center text and button containers */
-	/*      #cta-txt, #cta-btn */
-	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 
-#cta-txt {
-	/* format text */
+#img_container {
+	width: 100px;
+	height: 100px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#take_action_container {
+	height: 200px;
+	background-color: #f5f5f5;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#take_action_container_text {
 	font-family: 'Roboto Slab', serif;
 	font-weight: 300;
 	font-size: 3.5rem;
 	letter-spacing: 2px;
 	color: #333;
-	/* center text old fashioned-way */
-	text-align: center;
+	padding: 20px;
 }
 
-#cta-btn {
-	/* button's width */
+#take_action_container_button {
 	width: 20rem;
-	/* button's height */
 	height: 5rem;
 	margin: 1.3rem 0;
-	/* format text */
 	font-family: 'Roboto Slab', serif;
-	font-weight: 300;
-	line-height: 1;
-	/* format button */
 	background-color: #333;
 	border-radius: 5px;
-	/* center child anchor element */
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
-#cta-btn a {
-	/* make a large touch target */
-	/* expand the anchor element to fill height */
+#take_action_container_button a {
 	height: 100%;
-	/* make a large touch target */
-	/* expand the anchor element to fill width along primary axis ( horizontally ) */
-	flex-grow: 1;
-	/* format font */
 	color: #fff;
 	font-size: 1.8rem;
 	font-weight: 300;
-	/* format anchor dimsions match the containing h2 element #cta-btn */
 	border-radius: 5px;
-	/* center the text */
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-#cta-btn a:hover {
+#take_action_container a:hover {
 	background-color: #0ebfe9;
 }
 
