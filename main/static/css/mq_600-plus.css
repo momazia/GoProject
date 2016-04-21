@@ -42,7 +42,10 @@ header {
     */
     flex-basis: 0;
 }
-
+#take_action_container_text {
+	font-weight: 300;
+	font-size: 3.5rem;
+}
 /* nd = nav desktop */
 .nd {
     width: 100%;
@@ -108,7 +111,7 @@ header {
 }
 
 .nd li a:hover {
-    background-color: #0ebfe9;
+    background-color: deepskyblue;
 }
 
 /* ------------------------------------------- */
