@@ -77,7 +77,7 @@ header {
     background-color: deepskyblue;
 }
 
-#take_action_container_text {
+.text_header {
 	font-weight: 300;
 	font-size: 3.5rem;
 }

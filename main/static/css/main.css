@@ -126,7 +126,7 @@ header {
 	justify-content: center;
 }
 
-#take_action_container_text {
+.text_header {
 	font-weight: normal;
 	font-size: 2.5rem;
 	letter-spacing: 2px;
@@ -183,6 +183,10 @@ header {
 	width: 60%;
 }
 
+.content thead {
+	text-align: center;
+}
+
 .content th {
 	padding: 5px;
 	text-align: right;
@@ -196,8 +200,6 @@ header {
 .buttons_container {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
 }
 
 .button {
@@ -228,6 +230,9 @@ header {
 	font-family: 'Roboto', sans-serif;
 	font-size: 1.75rem;
 	height: 3rem;
+	border: 1px solid #bdc7d8;
+	width: 300px;
+	padding: 8px 10px;
 }
 
 .erroMessage {
