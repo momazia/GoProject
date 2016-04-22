@@ -242,7 +242,7 @@ header {
 	color: #D8000C;
 	background-color: #FFBABA;
 }
-
+/*We need to remove this as nm is removed from login page need to show team mates!!*/
 .nm {
 	background: deepskyblue;
 }
@@ -269,7 +269,7 @@ header {
 .nm li:hover {
 	background: royalblue;
 }
-
+/*Remove till here!!*/
 footer {
 	height: 70px;
 	background-color: #333;
@@ -284,4 +284,26 @@ footer p {
 	font-weight: 300;
 	font-size: 14px;
 	text-align: center;
+}
+.navbar-default {
+	background: #333333;
+}
+.navbar-default .navbar-nav > li > a {
+	color: #ffffff;
+	font-size: 1.4rem;
+	text-transform: uppercase;
+	font-family: 'Roboto', sans-serif;
+	height: 6rem;
+	width: 100%;
+	cursor: pointer;
+}
+.navbar-default .navbar-brand {
+	color: #ffffff !important;
+	font-size: 3rem;
+	font-family: 'Roboto', sans-serif;
+	height: 6rem;
+	cursor: pointer;
+}
+.navbar-default .navbar-nav > li > a:hover {
+	background: deepskyblue;
 }
