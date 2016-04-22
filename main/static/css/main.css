@@ -307,3 +307,16 @@ footer p {
 .navbar-default .navbar-nav > li > a:hover {
 	background: deepskyblue;
 }
+.signInSection {
+	height: 100% !important;
+}
+#wrapper {
+	max-width: 46em;
+	margin-top: 100px;
+}
+.signInBox {
+	height: 2em;
+	text-align:center;
+	vertical-align: middle;
+	margin-top: 25px;
+}

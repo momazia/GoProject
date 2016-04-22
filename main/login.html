@@ -34,46 +34,28 @@
 		</div>
 	</nav>
 
-
-	<section class="content">
-		<form action="">
-		<table>
-			<thead>
-				<tr>
-					<td colspan="2" class="text_header">Login</td>
-				</tr>
-			</thead>
-			<tr>
-				<th>Username:</th>
-				<td><input type="text" name="userName" placeholder="email@example.com"/></td>
-			</tr>
-			<tr>
-				<th>Password:</th>
-				<td><input type="password" name="password"/></td>
-			</tr>
-			<tr>
-				<th>
-					&nbsp;
-				</th>
-				<td>
-					<div class="buttons_container">
-						<div class="button">
-							<a href="#">Reset</a>
-						</div>
-						<div class="button">
-							<a href="#">Login</a>
-						</div>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<div class="erroMessage">
-					Something went wrong! And this text is very long some times! <br> Second line starts here.
-					</div>
-				</td>
-			</tr>
-		</table>
+	<section class="signInSection content">
+		<form action="" id="wrapper">
+			<div class="erroMessage">
+				Something went wrong! And this text is very long some times! <br> Second line starts here.
+			</div>
+			<div class="signInBox text_header">Please sign in</div>
+			<div class="signInBox">
+				<label>Username</label>
+				<input type="text" class="username" name="username" id="username" />
+			</div>
+			<div class="signInBox">
+				<label>Password</label>
+				<input type="password" class="password" name="password" id="password" />
+			</div>
+			<div class="signInBox buttons_container">
+				<div class="button">
+					<a href="#">Reset</a>
+				</div>
+				<div class="button">
+					<a href="#">Login</a>
+				</div>
+			</div>
 		</form>
 	</section>
 
