@@ -19,7 +19,7 @@ func init() {
 func signupHandler(res http.ResponseWriter, req *http.Request) {
 
 	//Parsing the template
-	tpl := template.Must(template.ParseFiles("signup.html"))
+	tpl := template.Must(template.ParseFiles("templates/signup.html"))
 	err := tpl.Execute(res, nil)
 	logError(err)
 }
@@ -28,7 +28,7 @@ func signupHandler(res http.ResponseWriter, req *http.Request) {
 func loginHandler(res http.ResponseWriter, req *http.Request) {
 
 	//Parsing the template
-	tpl := template.Must(template.ParseFiles("login.html"))
+	tpl := template.Must(template.ParseFiles("templates/login.html"))
 	err := tpl.Execute(res, nil)
 	logError(err)
 }
@@ -37,7 +37,7 @@ func loginHandler(res http.ResponseWriter, req *http.Request) {
 func indexHandler(res http.ResponseWriter, req *http.Request) {
 
 	//Parsing the template
-	tpl := template.Must(template.ParseFiles("index.html"))
+	tpl := template.Must(template.ParseFiles("templates/index.html"))
 	err := tpl.Execute(res, nil)
 	logError(err)
 }
