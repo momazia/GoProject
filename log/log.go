@@ -10,3 +10,8 @@ func LogError(err error) {
 		log.Println(err)
 	}
 }
+
+// Prints the given interface
+func Println(v ...interface{}) {
+	log.Println(v)
+}

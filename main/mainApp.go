@@ -2,14 +2,25 @@ package main
 
 import (
 	"github.com/momazia/GoProject/handler"
+	"github.com/momazia/GoProject/session"
 	"net/http"
 )
 
-const BUCKET_NAME = "gotraining-1271.appspot.com"
-
 func init() {
+	// Ignoring favicon.ico
+	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.Handle("/static/", http.StripPrefix("/static", http.FileServer(http.Dir("./static"))))
-	http.HandleFunc("/", handler.IndexHandler)
-	http.HandleFunc("/login", handler.LoginHandler)
-	http.HandleFunc("/signup", handler.SignupHandler)
+	http.Handle("/", handlerFilter(http.HandlerFunc(handler.IndexHandler)))
+	http.Handle("/login", handlerFilter(http.HandlerFunc(handler.LoginHandler)))
+	http.Handle("/signup", handlerFilter(http.HandlerFunc(handler.SignupHandler)))
+}
+
+// The filter is called whenever a handler is marked to go through this filter.
+// The filter takes care of session management.
+func handlerFilter(handler http.Handler) http.Handler {
+	return http.HandlerFunc(func(responseWriter http.ResponseWriter, request *http.Request) {
+		// Handling the session
+		session.Handle(responseWriter, request)
+		handler.ServeHTTP(responseWriter, request)
+	})
 }
