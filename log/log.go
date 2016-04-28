@@ -4,6 +4,13 @@ import (
 	"log"
 )
 
+// Logs the error given into log by prefixing the error message to it.
+func LogErrorWithMsg(errMessage string, err error) {
+	if err != nil {
+		log.Println(errMessage, err)
+	}
+}
+
 // Logs the error given into log
 func LogError(err error) {
 	if err != nil {
