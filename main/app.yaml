@@ -5,9 +5,5 @@ api_version: go1
 
 handlers:
 
-- url: /signup
-  script: _go_app
-  login: required
-
 - url: /.*
   script: _go_app
