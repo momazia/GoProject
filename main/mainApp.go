@@ -10,6 +10,7 @@ func init() {
 	// Ignoring favicon.ico
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.Handle("/static/", http.StripPrefix("/static", http.FileServer(http.Dir("./static"))))
+	// Setting the handlers
 	http.Handle("/", handlerFilter(http.HandlerFunc(handler.IndexHandler)))
 	http.Handle("/login", handlerFilter(http.HandlerFunc(handler.LoginHandler)))
 	http.Handle("/signup", handlerFilter(http.HandlerFunc(handler.SignupHandler)))
