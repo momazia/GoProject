@@ -3,6 +3,7 @@ package session
 import (
 	"github.com/momazia/GoProject/log"
 	"github.com/momazia/GoProject/memcache"
+	"github.com/momazia/GoProject/user"
 	"github.com/nu7hatch/gouuid"
 	"net/http"
 )
@@ -28,7 +29,8 @@ func createSession(res *http.ResponseWriter, req *http.Request) {
 	newUuid, err := uuid.NewV4()
 	sessionId := newUuid.String()
 	log.LogError(err)
-	memcache.Store(sessionId, true, req) // Hard coding true value
+	var user = user.User{SessionId: sessionId}
+	memcache.Store(sessionId, user, req) // Hard coding true value
 	createCookie(res, SESSION_ID, sessionId)
 }
 
@@ -46,17 +48,15 @@ func createCookie(res *http.ResponseWriter, cookieName, cookieValue string) {
 
 // Checks to see if the user is logged in by looking at the sessionID stored on the request cookie
 func isUserInSession(req *http.Request) bool {
-//	sessionIdCookie, err := req.Cookie(SESSION_ID)
-//	if err != nil {
-//		log.Println("Error reading SESSIONID:" + err.Error())
-//		return false
-//	}
-	var isLoggedIn string
+	sessionIdCookie, err := req.Cookie(SESSION_ID)
+	if err != nil {
+		log.Println("Error reading SESSIONID:" + err.Error())
+		return false
+	}
+	var user user.User
 	// Retrieve the item from memcache
-	memcache.Retrieve("03ec8f2c-a224-4710-511e-ecc5fb946918", req, &isLoggedIn)
-	log.Println("session: " + "03ec8f2c-a224-4710-511e-ecc5fb946918")
-	log.Println("isLoggedIn: " + isLoggedIn)
-	if isLoggedIn != "" {
+	memcache.Retrieve(sessionIdCookie.Value, req, &user)
+	if user.SessionId != "" {
 		return true
 	}
 	return false

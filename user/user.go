@@ -3,7 +3,7 @@ package user
 import ()
 
 type User struct {
-	Id string
+	SessionId string
 }
 
 // Creates a default user which is not loggedIn
