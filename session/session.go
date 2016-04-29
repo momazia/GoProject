@@ -13,15 +13,16 @@ const SESSION_ID = "SESSION-ID"
 // Handles session related operation. If the client does not have a cookie session set, it will create a new UUID
 // and sets that on the cookie and it will register it in the session. If the client does have a valid session
 // (by looking up the UUID coming from cookie in the session), then it will not do anything. Otherwise, it will
-// assign a new session to the user again.
-func Handle(res http.ResponseWriter, req *http.Request) {
-
-	if isUserInSession(req) {
+// assign a new session to the user again. It returns a boolean representing whether the user was in session or not.
+func Handle(res http.ResponseWriter, req *http.Request) bool {
+	isUserInSession, _ := isUserInSession(req)
+	if isUserInSession {
 		log.Println("User is in session.")
 	} else {
 		log.Println("User is not in session, setting the SESSION-ID ...")
 		createSession(&res, req)
 	}
+	return isUserInSession
 }
 
 // Creates a session by creating a new UUID and setting it on cookie and sessions.
@@ -47,27 +48,23 @@ func createCookie(res *http.ResponseWriter, cookieName, cookieValue string) {
 }
 
 // Checks to see if the user is logged in by looking at the sessionID stored on the request cookie
-func isUserInSession(req *http.Request) bool {
+func isUserInSession(req *http.Request) (bool, *user.User) {
 	sessionIdCookie, err := req.Cookie(SESSION_ID)
+	var user user.User
 	if err != nil {
 		log.Println("Error reading SESSIONID:" + err.Error())
-		return false
+		return false, &user
 	}
-	var user user.User
 	// Retrieve the item from memcache
 	memcache.Retrieve(sessionIdCookie.Value, req, &user)
 	if user.SessionId != "" {
-		return true
+		return true, &user
 	}
-	return false
+	return false, &user
 }
 
 // Gets the current user logged in
-func GetUser(req *http.Request) user.User {
-	var u user.User
-	if isUserInSession(req) {
-		sessionIdCookie, _ := req.Cookie(SESSION_ID)
-		memcache.Retrieve(sessionIdCookie.Value, req, &u)
-	}
-	return u
+func GetUser(req *http.Request) *user.User {
+	_, user := isUserInSession(req)
+	return user
 }
