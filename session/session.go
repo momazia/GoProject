@@ -29,8 +29,8 @@ func createSession(res *http.ResponseWriter, req *http.Request) {
 	newUuid, err := uuid.NewV4()
 	sessionId := newUuid.String()
 	log.LogError(err)
-	var user = user.User{SessionId: sessionId}
-	memcache.Store(sessionId, user, req) // Hard coding true value
+	var user = user.User{SessionId: sessionId, Name: req.URL.Query().Get("name")} // Getting the name from request.
+	memcache.Store(sessionId, user, req)                                          // Hard coding true value
 	createCookie(res, SESSION_ID, sessionId)
 }
 
@@ -60,4 +60,14 @@ func isUserInSession(req *http.Request) bool {
 		return true
 	}
 	return false
+}
+
+// Gets the current user logged in
+func GetUser(req *http.Request) user.User {
+	var u user.User
+	if isUserInSession(req) {
+		sessionIdCookie, _ := req.Cookie(SESSION_ID)
+		memcache.Retrieve(sessionIdCookie.Value, req, &u)
+	}
+	return u
 }

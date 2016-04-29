@@ -4,6 +4,7 @@ import ()
 
 type User struct {
 	SessionId string
+	Name string
 }
 
 // Creates a default user which is not loggedIn
