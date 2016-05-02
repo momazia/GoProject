@@ -14,10 +14,12 @@ func SaveUser(req *http.Request, u user.User) {
 	err := memcache.Store(u.Email, u, req)
 	log.LogErrorWithMsg("Cannot store the user into memcache:", err)
 	// Storing into datastore
-	var model = datastore.Model{
-		ID:   u.Email,
-		Data: u,
+	du := datastore.User{
+		Email:     u.Email,
+		FirstName: u.FirstName,
+		LastName:  u.LastName,
+		Password:  u.Password,
 	}
-	datastore.Store(req, datastore.KIND_USER, model)
+	err = datastore.Store(req, datastore.KIND_USER, du)
 	log.LogErrorWithMsg("Cannot store the user into datastore:", err)
 }

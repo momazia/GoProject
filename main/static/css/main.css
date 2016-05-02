@@ -218,6 +218,7 @@ header {
 }
 
 .errorMessage {
+	display: none;
 	margin: 20px;
 	border: 1px solid;
 	padding:15px;

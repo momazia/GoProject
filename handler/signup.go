@@ -16,11 +16,11 @@ func SignupHandler(res http.ResponseWriter, req *http.Request) {
 		// Validatation comes here
 
 		// Create the user
-		var user = user.User{
+		user := user.User{
 			Email:     req.FormValue("email"),
 			Password:  req.FormValue("password1"),
-			FirstName: req.FormValue("fName"),
-			LastName:  req.FormValue("lName"),
+			FirstName: req.FormValue("fname"),
+			LastName:  req.FormValue("lname"),
 		}
 
 		// Store the user

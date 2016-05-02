@@ -23,7 +23,7 @@
 		</ul>
 	</header>
 	<section class="content">
-		<form action="" id="signInForm">
+		<form action="" id="signInForm" method="POST">
 			<div class="element text_header">Sign up</div>
 			<div class="row">
 				<label>Email</label>
@@ -53,7 +53,7 @@
 					<a href="javascript:document.getElementById('signInForm').reset()">Reset</a>
 				</div>
 				<div class="button">
-					<a href="#">Sign up</a>
+					<a href="javascript:document.getElementById('signInForm').submit()">Sign up</a>
 				</div>
 			</div>
 		</form>

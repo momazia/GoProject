@@ -11,16 +11,16 @@ const (
 )
 
 // Stores the given model for the the kind in data store
-func Store(req *http.Request, kind string, model Model) error {
+func Store(req *http.Request, kind string, u User) error {
 	ctx := appengine.NewContext(req)
-	key := datastore.NewKey(ctx, kind, model.ID, 0, nil)
-	_, err := datastore.Put(ctx, key, &model.Data)
+	key := datastore.NewKey(ctx, kind, u.Email, 0, nil)
+	_, err := datastore.Put(ctx, key, &u)
 	return err
 }
 
 // Retrieves the model passed using the ID inside of it for the kind given.
-func Retrieve(req *http.Request, kind string, model *Model) error {
+func Retrieve(req *http.Request, kind string, u *User) error {
 	ctx := appengine.NewContext(req)
-	key := datastore.NewKey(ctx, kind, model.ID, 0, nil)
-	return datastore.Get(ctx, key, &model)
+	key := datastore.NewKey(ctx, kind, u.Email, 0, nil)
+	return datastore.Get(ctx, key, &u)
 }

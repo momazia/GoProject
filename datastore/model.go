@@ -2,7 +2,9 @@ package datastore
 
 import ()
 
-type Model struct {
-	ID   string
-	Data interface{}
+type User struct {
+	Email     string
+	Password  string
+	FirstName string
+	LastName  string
 }
