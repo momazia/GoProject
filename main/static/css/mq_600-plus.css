@@ -8,18 +8,11 @@
 header {
 
     /*
-    increase the height of the header area
-    this is necessary to contain both the logo and nav
-    */
-    height: 8.5rem;
-
-    /*
     header is already set to "display: flex" in main.css
     setting it here again just for clarity
     */
     /* make child elements of header arrange in a column */
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -35,10 +28,7 @@ header {
 /* nd = nav desktop */
 .nd {
     width: 100%;
-
-    /* container of some dimension */
-    /* this is important for contained elements */
-    height: 30px;
+    height: 100%;
 
     /* arrange li elements horizontally */
     display: flex;
@@ -49,6 +39,7 @@ header {
     letter-spacing: 1px;
     text-transform: uppercase;
     align-items: center;
+    justify-content: flex-end;
 }
 
 .nd li {
@@ -56,9 +47,8 @@ header {
     /* grow vertically */
     /* must be in container of some dimension */
     height: 100%;
-
-    /* have each li element grow horizontally */
-    flex-grow: 1;
+    
+    width: 150px;
 }
 
 .nd li a {
@@ -66,6 +56,8 @@ header {
     /* grow vertically */
     /* must be in container of some dimension */
     height: 100%;
+    
+    width: inherit;
 
     /* center the text wrapped by the anchor elements */
     display: flex;
@@ -81,6 +73,18 @@ header {
 .text_header {
 	font-weight: 300;
 	font-size: 3.5rem;
+}
+
+.row {
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 500px;
+	justify-content: flex-end; 
+}
+
+.row label {
+	margin-right: 10px;
 }
 
 footer {

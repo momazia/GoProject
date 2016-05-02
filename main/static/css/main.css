@@ -156,15 +156,14 @@ header {
 }
 
 .content {
-	width: 100%;
 	height: 100%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	font-family: 'Roboto', sans-serif;
-	font-size: 1.75rem;
+	font-size: 1.5rem;
 	background-color: #f5f5f5;
+	padding-bottom: 75px;
 }
 
 .content form {
@@ -174,21 +173,6 @@ header {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-}
-
-.content td {
-	padding: 5px;
-	width: 60%;
-
-}
-.content thead {
-	text-align: center;
-}
-
-.content th {
-	padding: 5px;
-	text-align: right;
-	width: 40%;
 }
 
 .content li {
@@ -233,13 +217,14 @@ header {
 	padding: 8px 10px;
 }
 
-.erroMessage {
+.errorMessage {
+	margin: 20px;
 	border: 1px solid;
 	padding:15px;
 	background-repeat: no-repeat;
+	font-size: 1.5rem;
 	color: #D8000C;
 	background-color: #FFBABA;
-	display: none;
 }
 /*We need to remove this as nm is removed from login page need to show team mates!!*/
 .nm {
@@ -307,20 +292,11 @@ footer p {
 	background: deepskyblue;
 }
 
-#wrapper {
-	max-width: 46em;
-	padding-bottom: 80px;
-}
-.signInBox {
-	height: 2em;
+.row {
 	text-align:center;
 	vertical-align: middle;
-	margin-top: 25px;
+	margin: 15px;
 	display: flex;
 	flex-direction: column;
-	padding-top: 20px;
-}
-.welcomeLabel {
-	align-self: flex-end;
-	margin: 10px;
+	display: flex;
 }
