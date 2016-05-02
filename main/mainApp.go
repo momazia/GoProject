@@ -22,7 +22,7 @@ func handlerFilter(handler http.Handler) http.Handler {
 	return http.HandlerFunc(func(responseWriter http.ResponseWriter, request *http.Request) {
 		// Handling the session
 		if !session.Handle(responseWriter, request) {
-			http.Redirect(responseWriter, request, request.URL.Path, http.StatusFound)
+			http.Redirect(responseWriter, request, request.URL.Path, http.StatusMovedPermanently)
 			return
 		}
 		handler.ServeHTTP(responseWriter, request)

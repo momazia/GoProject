@@ -2,8 +2,8 @@ package handler
 
 import (
 	"github.com/momazia/GoProject/log"
-	"html/template"
 	"github.com/momazia/GoProject/session"
+	"html/template"
 	"net/http"
 )
 
