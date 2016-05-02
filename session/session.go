@@ -3,7 +3,6 @@ package session
 import (
 	"github.com/momazia/GoProject/log"
 	"github.com/momazia/GoProject/memcache"
-	"github.com/momazia/GoProject/user"
 	"github.com/nu7hatch/gouuid"
 	"net/http"
 )
@@ -22,7 +21,7 @@ func Handle(res http.ResponseWriter, req *http.Request) bool {
 }
 
 // Creates a session by creating a new UUID and setting it on cookie and sessions.
-func CreateSession(res *http.ResponseWriter, req *http.Request, user user.User) {
+func CreateSession(res *http.ResponseWriter, req *http.Request, user User) {
 	newUuid, err := uuid.NewV4()
 	sessionId := newUuid.String()
 	log.LogError(err)
@@ -43,9 +42,9 @@ func createCookie(res *http.ResponseWriter, cookieName, cookieValue string) {
 }
 
 // Checks to see if the user is logged in by looking at the sessionID stored on the request cookie
-func isUserInSession(req *http.Request) (bool, *user.User) {
+func isUserInSession(req *http.Request) (bool, *User) {
 	sessionIdCookie, err := req.Cookie(SESSION_ID)
-	var user user.User
+	var user User
 	if err != nil {
 		log.Println("Error reading SESSIONID:" + err.Error())
 		return false, &user
@@ -59,7 +58,7 @@ func isUserInSession(req *http.Request) (bool, *user.User) {
 }
 
 // Gets the current user logged in
-func GetUser(req *http.Request) *user.User {
+func GetUser(req *http.Request) *User {
 	_, user := isUserInSession(req)
 	return user
 }
