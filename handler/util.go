@@ -2,7 +2,6 @@ package handler
 
 import (
 	"github.com/momazia/GoProject/session"
-	"log"
 	"net/http"
 )
 
@@ -15,9 +14,8 @@ type Header struct {
 	IsLoggedIn bool
 }
 
+// Creates a template for the given data by including the standard header to it.
 func GetAPlusTemplateHeader(req *http.Request, data interface{}) APlusTemplate {
-	log.Println("Logged Email:")
-	log.Println(session.GetUser(req).Email)
 	return APlusTemplate{
 		Header: Header{
 			IsLoggedIn: session.GetUser(req).Email != "",

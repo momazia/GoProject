@@ -19,8 +19,10 @@ func Store(req *http.Request, kind string, u User) error {
 }
 
 // Retrieves the model passed using the ID inside of it for the kind given.
-func Retrieve(req *http.Request, kind string, u *User) error {
+func Retrieve(req *http.Request, kind, id string) (User, error) {
 	ctx := appengine.NewContext(req)
-	key := datastore.NewKey(ctx, kind, u.Email, 0, nil)
-	return datastore.Get(ctx, key, &u)
+	key := datastore.NewKey(ctx, kind, id, 0, nil)
+	var u User
+	err := datastore.Get(ctx, key, &u)
+	return u, err
 }
