@@ -4,7 +4,6 @@ import (
 	"github.com/momazia/GoProject/log"
 	"github.com/momazia/GoProject/session"
 	"html/template"
-	"github.com/momazia/GoProject/session"
 	"net/http"
 )
 
