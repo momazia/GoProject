@@ -19,18 +19,20 @@
 			</a>
 		</svg>
 		<ul class="nd">
-			<li><a href="/login">Login</a></li>
+			{{if .Header.IsLoggedIn}}
+				<li><a href="/profile">Profile</a></li>
+				<li><a href="Logout">Logout</a></li>
+			{{else}}
+				<li><a href="/login">Login</a></li>
+				<li><a href="/signup">Signup</a></li>
+			{{end}}
 		</ul>
 	</header>
 	<section class="content">
 		<form action="" id="signInForm">
-			<div class="element text_header">Sign up</div>
+			<div class="element text_header">Profile</div>
 			<div class="row">
-				<label>Email</label>
-				<input type="text" name="email" placeholder="email@example.com"/>
-			</div>
-			<div class="row">
-				<label>Password</label>
+				<label>New password</label>
 				<input type="password" name="password1"/>
 			</div>
 			<div class="row">
@@ -53,13 +55,19 @@
 					<a href="javascript:document.getElementById('signInForm').reset()">Reset</a>
 				</div>
 				<div class="button">
-					<a href="#">Sign up</a>
+					<a href="#">Update</a>
 				</div>
 			</div>
 		</form>
 	</section>
 	<ul class="nm">
-		<li><a href="/login">Login</a></li>
+		{{if .Header.IsLoggedIn}}
+			<li><a href="/profile">Profile</a></li>
+			<li><a href="Logout">Logout</a></li>
+		{{else}}
+			<li><a href="/login">Login</a></li>
+			<li><a href="/signup">Signup</a></li>
+		{{end}}
 	</ul>
 
 	<footer>

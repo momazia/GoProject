@@ -11,6 +11,6 @@ func ProfileHandler(res http.ResponseWriter, req *http.Request) {
 
 	//Parsing the template
 	tpl := template.Must(template.ParseFiles("template/profile.html"))
-	err := tpl.Execute(res, nil)
+	err := tpl.Execute(res, GetAPlusTemplateHeader(req, nil))
 	log.LogError(err)
 }

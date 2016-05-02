@@ -11,9 +11,6 @@ func IndexHandler(res http.ResponseWriter, req *http.Request) {
 
 	//Parsing the template
 	tpl := template.Must(template.ParseFiles("template/index.html"))
-	tmp := GetAPlusTemplateHeader(req)
-	log.Println("isLoggedIn:")
-	log.Println(tmp.Header.IsLoggedIn)
-	err := tpl.Execute(res, tmp)
+	err := tpl.Execute(res, GetAPlusTemplateHeader(req, nil))
 	log.LogError(err)
 }

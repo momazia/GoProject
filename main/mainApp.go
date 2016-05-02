@@ -15,7 +15,7 @@ func init() {
 	http.Handle(hdl.URL_LOGIN, http.HandlerFunc(hdl.LoginHandler))
 	http.Handle(hdl.URL_SIGN_UP, http.HandlerFunc(hdl.SignupHandler))
 	http.Handle(hdl.URL_PROFILE, handlerFilter(http.HandlerFunc(hdl.ProfileHandler)))
-	http.Handle(hdl.URL_LOGOUT, handlerFilter(http.HandlerFunc(hdl.LogoutHandler)))
+	http.Handle(hdl.URL_LOGOUT, http.HandlerFunc(hdl.LogoutHandler))
 }
 
 // The filter is called whenever a handler is marked to go through this filter.
