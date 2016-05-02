@@ -30,6 +30,11 @@ func GetUser(req *http.Request) datastore.User {
 		log.Println("Cannot get the user from memcache", err)
 		// Getting the user from datastore
 		u, err = datastore.Retrieve(req, datastore.KIND_USER, email)
+		if err == nil {
+			// Trying to store the data into memcache
+			err := memcache.Store(email, u, req)
+			log.LogErrorWithMsg("Cannot store the data retreived from datastore into memcache", err)
+		}
 		log.LogError(err)
 	}
 	return u

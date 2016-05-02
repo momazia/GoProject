@@ -36,3 +36,13 @@ func Retrieve(id string, req *http.Request, value interface{}) error {
 	}
 	return nil
 }
+
+// Deletes a record from memcache for the given id
+func Delete(id string, req *http.Request) error {
+	ctx := appengine.NewContext(req)
+	err := memcache.Delete(ctx, id)
+	if err != memcache.ErrCacheMiss {
+		return err
+	}
+	return nil
+}
