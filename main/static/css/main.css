@@ -197,7 +197,7 @@ header {
 
 .buttons_container {
 	display: flex;
-	flex-direction: row;
+	flex-direction: row !important;
 }
 
 .button {
@@ -239,6 +239,7 @@ header {
 	background-repeat: no-repeat;
 	color: #D8000C;
 	background-color: #FFBABA;
+	display: none;
 }
 /*We need to remove this as nm is removed from login page need to show team mates!!*/
 .nm {
@@ -305,16 +306,21 @@ footer p {
 .navbar-default .navbar-nav > li > a:hover {
 	background: deepskyblue;
 }
-.signInSection {
-	height: 100% !important;
-}
+
 #wrapper {
 	max-width: 46em;
-	margin-top: 100px;
+	padding-bottom: 80px;
 }
 .signInBox {
 	height: 2em;
 	text-align:center;
 	vertical-align: middle;
 	margin-top: 25px;
+	display: flex;
+	flex-direction: column;
+	padding-top: 20px;
+}
+.welcomeLabel {
+	align-self: flex-end;
+	margin: 10px;
 }
