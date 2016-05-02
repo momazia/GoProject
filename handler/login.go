@@ -2,7 +2,6 @@ package handler
 
 import (
 	"github.com/momazia/GoProject/log"
-	"github.com/momazia/GoProject/session"
 	"html/template"
 	"net/http"
 )
@@ -10,8 +9,13 @@ import (
 // Login handler
 func LoginHandler(res http.ResponseWriter, req *http.Request) {
 
+	if req.Method == "POST" {
+		// Validation comes here
+	}
+
 	//Parsing the template
 	tpl := template.Must(template.ParseFiles("template/login.html"))
-	err := tpl.Execute(res, session.GetUser(req).Name)
+	err := tpl.Execute(res, nil)
 	log.LogError(err)
+
 }

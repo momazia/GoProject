@@ -3,11 +3,8 @@ package user
 import ()
 
 type User struct {
-	SessionId string
-	Name string
-}
-
-// Creates a default user which is not loggedIn
-func CreateUser() User {
-	return User{}
+	Email     string
+	Password  string
+	FirstName string
+	LastName   string
 }

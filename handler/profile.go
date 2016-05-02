@@ -6,11 +6,11 @@ import (
 	"net/http"
 )
 
-// The main page handler
-func IndexHandler(res http.ResponseWriter, req *http.Request) {
+// Profile handler
+func ProfileHandler(res http.ResponseWriter, req *http.Request) {
 
 	//Parsing the template
-	tpl := template.Must(template.ParseFiles("template/index.html"))
+	tpl := template.Must(template.ParseFiles("template/profile.html"))
 	err := tpl.Execute(res, nil)
 	log.LogError(err)
 }
