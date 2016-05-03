@@ -26,7 +26,7 @@ func SignupHandler(res http.ResponseWriter, req *http.Request) {
 			// Create the user
 			du := datastore.User{
 				Email:     email,
-				Password:  pass1,
+				Password:  Encrypt(pass1),
 				FirstName: req.FormValue("fname"),
 				LastName:  req.FormValue("lname"),
 			}

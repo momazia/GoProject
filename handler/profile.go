@@ -28,7 +28,7 @@ func ProfileHandler(res http.ResponseWriter, req *http.Request) {
 			// Saving the form
 			du := datastore.User{
 				Email:     session.GetUser(req).Email,
-				Password:  pass1,
+				Password:  Encrypt(pass1),
 				FirstName: req.FormValue("fname"),
 				LastName:  req.FormValue("lname"),
 			}

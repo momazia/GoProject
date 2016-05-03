@@ -37,5 +37,5 @@ func LoginHandler(res http.ResponseWriter, req *http.Request) {
 // Validates to see if the username and password given correct or not
 func isValidUser(username, password string, req *http.Request) bool {
 	u := util.GetUserWithEmail(username, req)
-	return u.Email == username && u.Password == password
+	return u.Email == username && u.Password == Encrypt(password)
 }
