@@ -2,6 +2,7 @@ package handler
 
 import (
 	"crypto/sha256"
+	"fmt"
 	"github.com/momazia/GoProject/session"
 	"io"
 	"net/http"
@@ -30,5 +31,5 @@ func GetAPlusTemplateHeader(req *http.Request, data interface{}) APlusTemplate {
 func Encrypt(pass string) string {
 	h := sha256.New()
 	io.WriteString(h, pass)
-	return string(h.Sum(nil))
+	return fmt.Sprintf("%x", h.Sum(nil))
 }
