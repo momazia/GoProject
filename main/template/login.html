@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="static/css/main.css">
 <link rel="stylesheet" media="screen and (min-width: 600px)" href="static/css/mq_600-plus.css">
 <link rel="stylesheet" media="screen and (min-width: 900px)" href="static/css/mq_900-plus.css">
+<script type="text/javascript" src="static/js/jquery.js"></script>
+<script type="text/javascript" src="static/js/login.js"></script>
 </head>
 <body>
 
@@ -26,23 +28,23 @@
 	<section class="content">
 		<form action="" id="signInForm" method="post">
 			<div class="element text_header">Please sign in</div>
+			<div class="row errorMessage" style="display:{{if .}}inline{{else}}none{{end}};">
+				Wrong username/password, please try again!
+			</div>
 			<div class="row">
 				<label>Username</label>
-				<input type="text" name="username" placeholder="example@example.com"/>
+				<input type="text" name="username" id="username" autofocus="on" placeholder="example@example.com"/>
 			</div>
 			<div class="row">
 				<label>Password</label>
-				<input type="password" name="password" />
-			</div>
-			<div class="row errorMessage" style="display:{{if .}}inline{{else}}none{{end}};">
-				Wrong username/password, please try again!
+				<input type="password" name="password" id="password"/>
 			</div>
 			<div class="buttons_container">
 				<div class="button">
 					<a href="javascript:document.getElementById('signInForm').reset()">Reset</a>
 				</div>
 				<div class="button">
-					<a href="javascript:document.getElementById('signInForm').submit()">Login</a>
+					<a href="javascript:document.getElementById('signInForm').submit()" class="login">Login</a>
 				</div>
 			</div>
 		</form>

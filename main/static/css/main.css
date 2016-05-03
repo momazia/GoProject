@@ -225,6 +225,7 @@ header {
 	font-size: 1.5rem;
 	color: #D8000C;
 	background-color: #FFBABA;
+	flex-direction: column !important;
 }
 /*We need to remove this as nm is removed from login page need to show team mates!!*/
 .nm {
