@@ -24,25 +24,25 @@
 	</header>
 
 	<section class="content">
-		<form action="" id="signInForm">
+		<form action="" id="signInForm" method="post">
 			<div class="element text_header">Please sign in</div>
 			<div class="row">
 				<label>Username</label>
-				<input type="text" name="username" />
+				<input type="text" name="username" placeholder="example@example.com"/>
 			</div>
 			<div class="row">
 				<label>Password</label>
 				<input type="password" name="password" />
 			</div>
-			<div class="errorMessage">
-				Something went wrong! And this text is very long some times! <br> Second line starts here.
+			<div class="row errorMessage" style="display:{{if .}}inline{{else}}none{{end}};">
+				Wrong username/password, please try again!
 			</div>
 			<div class="buttons_container">
 				<div class="button">
 					<a href="javascript:document.getElementById('signInForm').reset()">Reset</a>
 				</div>
 				<div class="button">
-					<a href="#">Login</a>
+					<a href="javascript:document.getElementById('signInForm').submit()">Login</a>
 				</div>
 			</div>
 		</form>

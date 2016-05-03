@@ -19,10 +19,7 @@ func SaveUser(req *http.Request, u datastore.User) {
 }
 
 // Get's user's information from memcache, if it does not exists, it will look into datastore.
-func GetUser(req *http.Request) datastore.User {
-	// Getting user's email from session
-	email := session.GetUser(req).Email
-
+func GetUserWithEmail(email string, req *http.Request) datastore.User {
 	// Getting the data from memcache
 	var u datastore.User
 	err := memcache.Retrieve(email, req, &u)
@@ -34,8 +31,16 @@ func GetUser(req *http.Request) datastore.User {
 			// Trying to store the data into memcache
 			err := memcache.Store(email, u, req)
 			log.LogErrorWithMsg("Cannot store the data retreived from datastore into memcache", err)
+		} else {
+			log.LogErrorWithMsg("Cannot retreive the data from datastore", err)
 		}
-		log.LogError(err)
 	}
 	return u
+}
+
+// Gets the user based on the logged in user in session
+func GetUser(req *http.Request) datastore.User {
+	// Getting user's email from session
+	email := session.GetUser(req).Email
+	return GetUserWithEmail(email, req)
 }
