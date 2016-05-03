@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"encoding/json"
 	"github.com/momazia/GoProject/datastore"
 	"github.com/momazia/GoProject/log"
 	"github.com/momazia/GoProject/session"
@@ -46,6 +47,14 @@ func SignupHandler(res http.ResponseWriter, req *http.Request) {
 	tpl := template.Must(template.ParseFiles("template/signup.html"))
 	err := tpl.Execute(res, errs)
 	log.LogError(err)
+}
+
+// A handler for Ajax calls which writes a JSON on the response back, saying if the user is already taken or not.
+func IsUserTaken(res http.ResponseWriter, req *http.Request) {
+	userName := req.FormValue("username")
+	log.Println("Checking to see if the user [" + userName + "] is already taken...")
+	u := util.GetUserWithEmail(userName, req)
+	json.NewEncoder(res).Encode(u.Email != "")
 }
 
 // validates to make sure the email format is correct. Also it checks to see if
