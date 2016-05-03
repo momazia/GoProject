@@ -55,6 +55,9 @@ func validate(email, pass1, pass2 string, req *http.Request) []string {
 	if valid, _ := regexp.MatchString(`^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$`, email); !valid {
 		err = append(err, "Wrong email format")
 	}
+	if pass1 == "" || pass2 == "" {
+		err = append(err, "Password is mandatory")
+	}
 	if pass1 != pass2 {
 		err = append(err, "Passwords do not match")
 	}

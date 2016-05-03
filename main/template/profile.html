@@ -29,7 +29,7 @@
 		</ul>
 	</header>
 	<section class="content">
-		<form action="" id="signInForm" method="post">
+		<form action="" id="profileForm" method="post">
 			<div class="element text_header">Profile</div>
 			<div class="row">
 				<label>New password</label>
@@ -41,21 +41,26 @@
 			</div>
 			<div class="row">
 				<label>First name</label>
-				<input type="text" name="fname" value="{{.Data.FirstName}}"/>
+				<input type="text" name="fname" value="{{.Data.User.FirstName}}"/>
 			</div>
 			<div class="row">
 				<label>Last name</label>
-				<input type="text" name="lname" value="{{.Data.LastName}}"/>
+				<input type="text" name="lname" value="{{.Data.User.LastName}}"/>
 			</div>
-			<div class="errorMessage">
-				Something went wrong! And this text is very long some times! <br> Second line starts here.
-			</div>
+			{{if .Data.Errors}}
+				<div class="row errorMessage" style="display: inline;">
+					{{range $element := .Data.Errors}}
+						{{$element}}
+						<br>
+					{{end}}
+				</div>
+			{{end}}
 			<div class="buttons_container">
 				<div class="button">
-					<a href="javascript:document.getElementById('signInForm').reset()">Reset</a>
+					<a href="javascript:document.getElementById('profileForm').reset()">Reset</a>
 				</div>
 				<div class="button">
-					<a href="javascript:document.getElementById('signInForm').submit()">Update</a>
+					<a href="javascript:document.getElementById('profileForm').submit()">Update</a>
 				</div>
 			</div>
 		</form>
