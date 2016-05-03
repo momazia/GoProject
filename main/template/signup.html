@@ -10,6 +10,7 @@
 <link rel="stylesheet" media="screen and (min-width: 900px)" href="static/css/mq_900-plus.css">
 <script type="text/javascript" src="static/js/jquery.js"></script>
 <script type="text/javascript" src="static/js/signup.js"></script>
+<script type="text/javascript" src="static/js/common.js"></script>
 </head>
 <body>
 
@@ -27,38 +28,38 @@
 	<section class="content">
 		<form action="" id="signUpForm" method="POST">
 			<div class="element text_header">Sign up</div>
+			<div class="row errorMessage" style="display: {{if .}}inline{{else}}none{{end}};">
+				{{range $element := .}}
+				{{$element}}
+				<br>
+				{{end}}
+			</div>
 			<div class="row">
 				<label>Email</label>
 				<input type="text" id="email" name="email" placeholder="email@example.com"/>
 			</div>
 			<div class="row">
 				<label>Password</label>
-				<input type="password" name="password1"/>
+				<input type="password" name="password1" id="password"/>
 			</div>
 			<div class="row">
 				<label>Retry password</label>
-				<input type="password" name="password2"/>
+				<input type="password" name="password2" id="retryPassword"/>
 			</div>
 			<div class="row">
 				<label>First name</label>
-				<input type="text" name="fname" />
+				<input type="text" name="fname" id="fname"/>
 			</div>
 			<div class="row">
 				<label>Last name</label>
-				<input type="text" name="lname" />
-			</div>
-			<div class="row errorMessage" style="display: {{if .}}inline{{else}}none{{end}};">
-				{{range $element := .}}
-					{{$element}}
-					<br>
-				{{end}}
+				<input type="text" name="lname" id="lname"/>
 			</div>
 			<div class="buttons_container">
 				<div class="button">
 					<a id="resetBtn" href="">Reset</a>
 				</div>
 				<div class="button">
-					<a href="javascript:document.getElementById('signUpForm').submit()">Sign up</a>
+					<a href="javascript:document.getElementById('signUpForm').submit()" class="submit">Sign up</a>
 				</div>
 			</div>
 		</form>

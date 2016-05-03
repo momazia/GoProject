@@ -1,29 +1,66 @@
 $(document).ready(function() {
 
 	$("#email").on("focusout", function() {
-		var username = $(this).val();
-		if (username != "") {
-			$.ajax({
-				url : "/signup/isusertaken",
-				data : {
-					"username" : username
-				},
-				success : function(result) {
-					if (result.includes('true')) {
-						$('.errorMessage').show();
-						$('.errorMessage').text('User is already taken');
-					} else {
-						$('.errorMessage').hide();
-						$('.errorMessage').text('');
-					}
-				}
-			});
+		validateEmail(this);
+		if(!$(".errorMessage").is(":visible")) {
+			isUserTaken($("#email").val());
 		}
 	});
 
+	$("#password").on("focusout", function() {
+		validatePassword(this);
+	});
+
+	$("#retryPassword").on("focusout", function() {
+		isPasswordSame();
+	});
+	$("#fname").on("focusout", function() {
+		if($(this).val() == "") showError("First Name cannot be blank");
+	});
+	$("#lname").on("focusout", function() {
+		if($(this).val() == "") showError("Last Name cannot be blank");
+	});
+	$("#submit").on("mousedown", function(e) {
+		validateEmail($("#email"));
+		if(!$(".errorMessage").is(":visible")) {
+			validatePassword($("#password"));
+			if(!$(".errorMessage").is(":visible")) {
+				isPasswordSame();
+				if(!$(".errorMessage").is(":visible")) {
+					if($("#fname").val() == "") {
+						showError("First Name cannot be blank");
+					} else {
+						removeError();
+						if($("#lname").val() == "") {
+							showError("Last Name cannot be blank");
+						} else {
+							removeError();
+						}
+					}
+				}
+			}
+		}
+	});
 	$("#resetBtn").on("click", function() {
-		$('.errorMessage').hide();
-		$('.errorMessage').text('');
+		removeError();
 		$('signUpForm').reset()
 	});
 });
+
+function isUserTaken(username) {
+	$.ajax({
+		url : "/signup/isusertaken",
+		data : {
+			"username" : username
+		},
+		success : function(result) {
+			if (result.includes('true')) {
+				$('.errorMessage').show();
+				$('.errorMessage').text('User is already taken !!');
+			} else {
+				$('.errorMessage').show();
+				$('.errorMessage').text('Username available !!');
+			}
+		}
+	});
+}

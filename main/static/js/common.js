@@ -58,3 +58,15 @@ function removeError() {
     $(".errorMessage").hide();
     $(".submit").unbind('click');
 }
+
+function isPasswordSame() {
+    if($("#password").val() != $("#retryPassword").val()) {
+        showError("Password should be same");
+    } else {
+        if($("#retryPassword").val() == "") showError("Password cannot be empty");
+        else {
+            showError("Passwords match");
+            removeError();
+        }
+    }
+}
