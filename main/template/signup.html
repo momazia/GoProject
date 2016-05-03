@@ -23,7 +23,7 @@
 		</ul>
 	</header>
 	<section class="content">
-		<form action="" id="signInForm" method="POST">
+		<form action="" id="signUpForm" method="POST">
 			<div class="element text_header">Sign up</div>
 			<div class="row">
 				<label>Email</label>
@@ -45,15 +45,20 @@
 				<label>Last name</label>
 				<input type="text" name="lname" />
 			</div>
-			<div class="errorMessage">
-				Something went wrong! And this text is very long some times! <br> Second line starts here.
-			</div>
+			{{if .}}
+				<div class="row errorMessage" style="display: inline;">
+					{{range $element := .}}
+						{{$element}}
+						<br>
+					{{end}}
+				</div>
+			{{end}}
 			<div class="buttons_container">
 				<div class="button">
-					<a href="javascript:document.getElementById('signInForm').reset()">Reset</a>
+					<a href="javascript:document.getElementById('signUpForm').reset()">Reset</a>
 				</div>
 				<div class="button">
-					<a href="javascript:document.getElementById('signInForm').submit()">Sign up</a>
+					<a href="javascript:document.getElementById('signUpForm').submit()">Sign up</a>
 				</div>
 			</div>
 		</form>

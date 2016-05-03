@@ -15,7 +15,6 @@ func LoginHandler(res http.ResponseWriter, req *http.Request) {
 
 	if req.Method == "POST" {
 		email := req.FormValue("username")
-		// Validation comes here
 		if isValidUser(email, req.FormValue("password"), req) {
 			// Set the session
 			session.CreateSession(&res, req, session.User{Email: email})
