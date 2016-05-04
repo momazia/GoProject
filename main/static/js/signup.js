@@ -6,49 +6,30 @@ $(document).ready(function() {
 			isUserTaken($("#email").val());
 		}
 	});
-	$("#email").on("focusin", function() {
-		$(".errorMessage").hide();
-	});
+
 	$("#password").on("focusout", function() {
 		validatePassword(this);
-		if($("#retryPassword").val().length != 0) {
-			isPasswordSame();
-		}
 	});
-	$("#password").on("focusin", function() {
-		validateEmail($("#email").val());
-	});
-	$("#retryPassword").on("focusin", function() {
-		validatePassword($("#password").val());
-	});
+
 	$("#retryPassword").on("focusout", function() {
-		isPasswordSame();
-	});
-	$("#fname").on("focusiin", function() {
-		isPasswordSame();
+		isPasswordSame(true);
 	});
 	$("#fname").on("focusout", function() {
-		if($(this).val().length == 0) showError("First Name cannot be blank");
-	});
-	$("#lname").on("focusin", function() {
-		isPasswordSame();
-		if($("#fname").val() == "") showError("First Name cannot be blank");
-
+		if($(this).val() == "") showError("First Name cannot be blank");
 	});
 	$("#lname").on("focusout", function() {
 		if($(this).val() == "") showError("Last Name cannot be blank");
 	});
-	$("#submit").on("mousedown", function(e) {
+	$(".submit").on("mousedown", function(e) {
 		validateEmail($("#email"));
 		if(!$(".errorMessage").is(":visible")) {
 			validatePassword($("#password"));
 			if(!$(".errorMessage").is(":visible")) {
-				isPasswordSame();
+				isPasswordSame(false);
 				if(!$(".errorMessage").is(":visible")) {
 					if($("#fname").val() == "") {
 						showError("First Name cannot be blank");
 					} else {
-						removeError();
 						if($("#lname").val() == "") {
 							showError("Last Name cannot be blank");
 						} else {
@@ -59,9 +40,10 @@ $(document).ready(function() {
 			}
 		}
 	});
-	$("#resetBtn").on("click", function() {
+	$("#resetBtn").on("mouseDown", function(e) {
+		e.preventDefault();
 		removeError();
-		$('signUpForm').reset()
+		$('signUpForm').reset();
 	});
 });
 
@@ -73,11 +55,9 @@ function isUserTaken(username) {
 		},
 		success : function(result) {
 			if (result.includes('true')) {
-				$('.errorMessage').show();
-				$('.errorMessage').text('User is already taken !!');
+				showError("User is already taken !!");
 			} else {
-				$('.errorMessage').show();
-				$('.errorMessage').text('Username available !!');
+				showSuccess("Username available !!");
 			}
 		}
 	});
