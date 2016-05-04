@@ -36,11 +36,11 @@
 			<div class="element text_header">Profile</div>
 			<div class="row">
 				<label>New password</label>
-				<input type="password" name="password" id="password"/>
+				<input type="password" name="password1" id="password"/>
 			</div>
 			<div class="row">
 				<label>Retry password</label>
-				<input type="password" name="retryPassword" id="retryPassword"/>
+				<input type="password" name="password2" id="retryPassword"/>
 			</div>
 			<div class="row">
 				<label>First name</label>
@@ -50,15 +50,12 @@
 				<label>Last name</label>
 				<input type="text" name="lname" id="lname" value="{{.Data.User.LastName}}"/>
 			</div>
-			<div>
-			{{if .Data.Errors}}
-				<div class="row errorMessage" style="display: inline;">
-					{{range $element := .Data.Errors}}
-						{{$element}}
-						<br>
-					{{end}}
-				</div>
-			{{end}}
+
+			<div class="row errorMessage" style="display: {{if .Data.Errors}}inline{{else}}none{{end}};">
+				{{range $element := .Data.Errors}}
+				{{$element}}
+				<br>
+				{{end}}
 			</div>
 			<div class="buttons_container">
 				<div class="button">

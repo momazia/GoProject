@@ -11,6 +11,9 @@ $(document).ready(function() {
 	});
 	$("#password").on("focusout", function() {
 		validatePassword(this);
+		if($("#retryPassword").val().length != 0) {
+			isPasswordSame();
+		}
 	});
 	$("#password").on("focusin", function() {
 		validateEmail($("#email").val());
@@ -25,11 +28,11 @@ $(document).ready(function() {
 		isPasswordSame();
 	});
 	$("#fname").on("focusout", function() {
-		if($(this).val() == "") showError("First Name cannot be blank");
+		if($(this).val().length == 0) showError("First Name cannot be blank");
 	});
 	$("#lname").on("focusin", function() {
 		isPasswordSame();
-		if($(this).val() == "") showError("First Name cannot be blank");
+		if($("#fname").val() == "") showError("First Name cannot be blank");
 
 	});
 	$("#lname").on("focusout", function() {
