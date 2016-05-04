@@ -18,6 +18,7 @@ func init() {
 	http.Handle(hdl.URL_LOGOUT, http.HandlerFunc(hdl.LogoutHandler))
 	http.Handle(hdl.URL_PROFILE, handlerFilter(http.HandlerFunc(hdl.ProfileHandler)))
 	http.Handle(hdl.URL_GALLERY, handlerFilter(http.HandlerFunc(hdl.GalleryHandler)))
+	http.Handle(hdl.URL_DOWNLOAD, handlerFilter(http.HandlerFunc(hdl.DownloadHandler)))
 }
 
 // The filter is called whenever a handler is marked to go through this filter.
