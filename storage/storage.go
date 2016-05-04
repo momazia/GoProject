@@ -13,7 +13,7 @@ const BUCKET_NAME = "gotraining-1271.appspot.com"
 // Saves the given file for the given name and content under the username.
 func Store(req *http.Request, userName, fileName string, file io.Reader) error {
 
-	fileName = userName + "/" + fileName
+	fileName = getFilePath(userName, fileName)
 
 	// Creating new context and client.
 	ctx := appengine.NewContext(req)
@@ -30,12 +30,18 @@ func Store(req *http.Request, userName, fileName string, file io.Reader) error {
 	return err
 }
 
-// Retrieves the file stored for the given name
-func Retrieve(req *http.Request, fileName string) (io.ReadCloser, error) {
+// Retrieve the file stored for the given name
+func Retrieve(req *http.Request, userName, fileName string) (io.ReadCloser, error) {
 	// Creating new context and client.
 	ctx := appengine.NewContext(req)
 	client, err := storage.NewClient(ctx)
 	log.LogErrorWithMsg("Cannot create a new client", err)
 	defer client.Close()
-	return client.Bucket(BUCKET_NAME).Object(fileName).NewReader(ctx)
+	filePath := getFilePath(userName, fileName)
+	return client.Bucket(BUCKET_NAME).Object(filePath).NewReader(ctx)
+}
+
+// Creates file path based on the user and file names
+func getFilePath(userName, fileName string) string {
+	return userName + "/" + fileName
 }

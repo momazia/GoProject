@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-// Login handler
+// Gallery handler
 func GalleryHandler(res http.ResponseWriter, req *http.Request) {
 
 	if req.Method == "POST" {
