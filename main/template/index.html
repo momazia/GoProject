@@ -23,6 +23,7 @@
 			</svg>
 			<ul class="nd">
 				{{if .Header.IsLoggedIn}}
+					<li><a href="/gallery">Gallery</a></li>
 					<li><a href="/profile">Profile</a></li>
 					<li><a href="logout">Logout</a></li>
 				{{else}}
@@ -38,7 +39,7 @@
 			<h1 class="text_header">We take care of your files :-)</h1>
 			<h2 id="take_action_container_button">
 				{{if .Header.IsLoggedIn}}
-					<a href="/profile">Start Now</a>
+					<a href="/gallery">Start Now</a>
 				{{else}}
 					<a href="/login">Start Now</a>
 				{{end}}
@@ -58,6 +59,7 @@
 
 	<ul class="nm">
 		{{if .Header.IsLoggedIn}}
+			<li><a href="/gallery">Gallery</a></li>
 			<li><a href="/profile">Profile</a></li>
 			<li><a href="logout">Logout</a></li>
 		{{else}}

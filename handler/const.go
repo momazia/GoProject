@@ -8,4 +8,5 @@ const (
 	URL_SIGN_UP               string = "/signup"
 	URL_SIGN_UP_IS_USER_TAKEN string = "/signup/isusertaken"
 	URL_PROFILE               string = "/profile"
+	URL_GALLERY               string = "/gallery"
 )
