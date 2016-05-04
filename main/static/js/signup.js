@@ -6,16 +6,31 @@ $(document).ready(function() {
 			isUserTaken($("#email").val());
 		}
 	});
-
+	$("#email").on("focusin", function() {
+		$(".errorMessage").hide();
+	});
 	$("#password").on("focusout", function() {
 		validatePassword(this);
 	});
-
+	$("#password").on("focusin", function() {
+		validateEmail($("#email").val());
+	});
+	$("#retryPassword").on("focusin", function() {
+		validatePassword($("#password").val());
+	});
 	$("#retryPassword").on("focusout", function() {
+		isPasswordSame();
+	});
+	$("#fname").on("focusiin", function() {
 		isPasswordSame();
 	});
 	$("#fname").on("focusout", function() {
 		if($(this).val() == "") showError("First Name cannot be blank");
+	});
+	$("#lname").on("focusin", function() {
+		isPasswordSame();
+		if($(this).val() == "") showError("First Name cannot be blank");
+
 	});
 	$("#lname").on("focusout", function() {
 		if($(this).val() == "") showError("Last Name cannot be blank");

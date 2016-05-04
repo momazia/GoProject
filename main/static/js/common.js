@@ -22,7 +22,24 @@ function validateEmail(username) {
  */
 function validatePassword(password) {
     var pwd = $(password).val();
-    if(pwd == "") {
+    if($("#email").val().length ==0)
+    {
+        showError("Email cannot be empty");
+    }
+    else if(pwd == "") {
+        showError("Password cannot be empty");
+    } else {
+        removeError();
+    }
+}
+/**
+ * Validating the password field for empty only
+ * @param password
+ */
+function validatePasswordNoEmail(password) {
+    var pwd = $("#password").val().length;
+    console.log("value is:"+pwd);
+    if(pwd == 0) {
         showError("Password cannot be empty");
     } else {
         removeError();
@@ -60,6 +77,19 @@ function removeError() {
 }
 
 function isPasswordSame() {
+    validatePassword($("#password").val());
+    if($("#password").val() != $("#retryPassword").val()) {
+        showError("Password should be same");
+    } else {
+        if($("#retryPassword").val() == "") showError("Password cannot be empty");
+        else {
+            showError("Passwords match");
+            removeError();
+        }
+    }
+}
+function isPasswordSameNoEmail() {
+    validatePasswordNoEmail($("#password").val());
     if($("#password").val() != $("#retryPassword").val()) {
         showError("Password should be same");
     } else {

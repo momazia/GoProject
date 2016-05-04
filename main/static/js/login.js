@@ -2,6 +2,10 @@ $(document).ready(function() {
     $("#username").on("focusout", function() {
         validateEmail(this);
     });
+    $("#username").on("focusin", function() {
+        $(".errorMessage").hide();
+    });
+
     $("#password").on("focusout", function() {
         validatePassword(this);
     });

@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="static/css/main.css">
 <link rel="stylesheet" media="screen and (min-width: 600px)" href="static/css/mq_600-plus.css">
 <link rel="stylesheet" media="screen and (min-width: 900px)" href="static/css/mq_900-plus.css">
+	<script type="text/javascript" src="static/js/jquery.js"></script>
+	<script type="text/javascript" src="static/js/profile.js"></script>
+	<script type="text/javascript" src="static/js/common.js"></script>
 </head>
 <body>
 
@@ -33,20 +36,21 @@
 			<div class="element text_header">Profile</div>
 			<div class="row">
 				<label>New password</label>
-				<input type="password" name="password1"/>
+				<input type="password" name="password" id="password"/>
 			</div>
 			<div class="row">
 				<label>Retry password</label>
-				<input type="password" name="password2"/>
+				<input type="password" name="retryPassword" id="retryPassword"/>
 			</div>
 			<div class="row">
 				<label>First name</label>
-				<input type="text" name="fname" value="{{.Data.User.FirstName}}"/>
+				<input type="text" name="fname" id="fname" value="{{.Data.User.FirstName}}"/>
 			</div>
 			<div class="row">
 				<label>Last name</label>
-				<input type="text" name="lname" value="{{.Data.User.LastName}}"/>
+				<input type="text" name="lname" id="lname" value="{{.Data.User.LastName}}"/>
 			</div>
+			<div>
 			{{if .Data.Errors}}
 				<div class="row errorMessage" style="display: inline;">
 					{{range $element := .Data.Errors}}
@@ -55,6 +59,7 @@
 					{{end}}
 				</div>
 			{{end}}
+			</div>
 			<div class="buttons_container">
 				<div class="button">
 					<a href="javascript:document.getElementById('profileForm').reset()">Reset</a>
