@@ -35,6 +35,12 @@
 	<section class="content">
 		<form action="" id="profileForm" method="post">
 			<div class="element text_header">Profile</div>
+			<div class="row errorMessage" style="display: {{if .Data.Errors}}inline{{else}}none{{end}};">
+				{{range $element := .Data.Errors}}
+				{{$element}}
+				<br>
+				{{end}}
+			</div>
 			<div class="row">
 				<label>New password</label>
 				<input type="password" name="password1" id="password"/>
@@ -51,19 +57,12 @@
 				<label>Last name</label>
 				<input type="text" name="lname" id="lname" value="{{.Data.User.LastName}}"/>
 			</div>
-
-			<div class="row errorMessage" style="display: {{if .Data.Errors}}inline{{else}}none{{end}};">
-				{{range $element := .Data.Errors}}
-				{{$element}}
-				<br>
-				{{end}}
-			</div>
 			<div class="buttons_container">
 				<div class="button">
 					<a href="javascript:document.getElementById('profileForm').reset()">Reset</a>
 				</div>
 				<div class="button">
-					<a href="javascript:document.getElementById('profileForm').submit()">Update</a>
+					<a href="javascript:document.getElementById('profileForm').submit()" class="submit">Update</a>
 				</div>
 			</div>
 		</form>
