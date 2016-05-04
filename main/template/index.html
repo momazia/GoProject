@@ -37,7 +37,11 @@
 		<section id="take_action_container">
 			<h1 class="text_header">We take care of your files :-)</h1>
 			<h2 id="take_action_container_button">
-				<a href="/login">Start Now</a>
+				{{if .Header.IsLoggedIn}}
+					<a href="/profile">Start Now</a>
+				{{else}}
+					<a href="/login">Start Now</a>
+				{{end}}
 			</h2>
 		</section>
 	</div>
