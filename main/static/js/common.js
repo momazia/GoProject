@@ -22,24 +22,7 @@ function validateEmail(username) {
  */
 function validatePassword(password) {
     var pwd = $(password).val();
-    if($("#email").val().length ==0)
-    {
-        showError("Email cannot be empty");
-    }
-    else if(pwd == "") {
-        showError("Password cannot be empty");
-    } else {
-        removeError();
-    }
-}
-/**
- * Validating the password field for empty only
- * @param password
- */
-function validatePasswordNoEmail(password) {
-    var pwd = $("#password").val().length;
-    console.log("value is:"+pwd);
-    if(pwd == 0) {
+    if(pwd == "") {
         showError("Password cannot be empty");
     } else {
         removeError();
@@ -61,6 +44,8 @@ function isValidEmail(email) {
  * @param message
  */
 function showError(message) {
+    $(".errorMessage").css("color", "#D8000C");
+    $(".errorMessage").css("backgroundColor", "#FFBABA");
     $(".errorMessage").text(message);
     $(".errorMessage").show();
     $('.submit').bind('click', function (e) {
@@ -76,27 +61,25 @@ function removeError() {
     $(".submit").unbind('click');
 }
 
-function isPasswordSame() {
-    validatePassword($("#password").val());
+/**
+ * Checks if the password and retry password entered are same.
+ */
+function isPasswordSame(displaySuccess) {
     if($("#password").val() != $("#retryPassword").val()) {
         showError("Password should be same");
     } else {
+        console.log("lol1");
         if($("#retryPassword").val() == "") showError("Password cannot be empty");
         else {
-            showError("Passwords match");
-            removeError();
+            if (displaySuccess) showSuccess("Passwords match");
         }
     }
 }
-function isPasswordSameNoEmail() {
-    validatePasswordNoEmail($("#password").val());
-    if($("#password").val() != $("#retryPassword").val()) {
-        showError("Password should be same");
-    } else {
-        if($("#retryPassword").val() == "") showError("Password cannot be empty");
-        else {
-            showError("Passwords match");
-            removeError();
-        }
-    }
+
+function showSuccess(message) {
+    $(".errorMessage").css("color", "#436a3d");
+    $(".errorMessage").css("backgroundColor", "#90f780");
+    $(".errorMessage").text(message);
+    $(".errorMessage").show();
+
 }
