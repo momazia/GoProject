@@ -14,6 +14,12 @@ import (
 // Signup handler
 func SignupHandler(res http.ResponseWriter, req *http.Request) {
 
+	if req.Method != "POST" && session.GetUser(req).Email != "" {
+		// If user is already in session, we want to redirect him to front page.
+		http.Redirect(res, req, URL_ROOT, http.StatusFound)
+		return
+	}
+
 	var errs []string
 
 	if req.Method == "POST" {

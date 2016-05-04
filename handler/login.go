@@ -11,6 +11,12 @@ import (
 // Login handler
 func LoginHandler(res http.ResponseWriter, req *http.Request) {
 
+	if req.Method != "POST" && session.GetUser(req).Email != "" {
+		// If user is already in session, we want to redirect him to front page.
+		http.Redirect(res, req, URL_ROOT, http.StatusFound)
+		return
+	}
+
 	invalidUser := false
 
 	if req.Method == "POST" {
@@ -19,7 +25,7 @@ func LoginHandler(res http.ResponseWriter, req *http.Request) {
 			// Set the session
 			session.CreateSession(&res, req, session.User{Email: email})
 			// Redirecting the user to profile page.
-			http.Redirect(res, req, URL_PROFILE, http.StatusFound)
+			http.Redirect(res, req, URL_ROOT, http.StatusFound)
 			return
 		} else {
 			// Invalid User
