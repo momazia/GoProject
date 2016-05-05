@@ -44,8 +44,15 @@
 				</div>
 			</div>
 			<div class="row">
-				<img src="/download?fileName=characters-35178_960_720.png"/>
-				<img src="/download?fileName=images.png"/>
+				{{range $element := .Data.Files}}
+					{{if eq $element.Extension "txt" }}
+					<object width="300" height="300" type="text/html" data="/download?fileName={{print $element.Name "." $element.Extension}}" border="1" >
+					</object>
+					{{else}}
+						<img src="/download?fileName={{print $element.Name "." $element.Extension}}" height="50" width="50"/>
+					{{end}}
+					{{$element.Name}}
+				{{end}}
 			</div>
 		</form>
 	</section>
