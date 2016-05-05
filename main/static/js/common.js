@@ -68,7 +68,6 @@ function isPasswordSame(displaySuccess) {
     if($("#password").val() != $("#retryPassword").val()) {
         showError("Password should be same");
     } else {
-        console.log("lol1");
         if($("#retryPassword").val() == "") showError("Password cannot be empty");
         else {
             if (displaySuccess) showSuccess("Passwords match");
@@ -82,4 +81,20 @@ function showSuccess(message) {
     $(".errorMessage").text(message);
     $(".errorMessage").show();
 
+}
+
+function validateFileFormat(object) {
+    var value = document.getElementById("file").files.length;
+    if (value > 0) {
+        var fileName = document.getElementById("file").files[0].name;
+        var ext = fileName.match(/\.(.+)$/)[1];
+        if (ext == "jpeg" || ext == "jpg" || ext == "png") {
+            removeError();
+        } else {
+            showError("This is not an allowed file type.");
+            object.value = '';
+        }
+    } else {
+        showError("No file to upload");
+    }
 }
