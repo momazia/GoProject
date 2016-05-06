@@ -40,3 +40,6 @@ header {
 .flex-item {
     width: 30%;
 }
+.grid-item {
+    width: 300px;
+}

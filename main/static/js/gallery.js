@@ -11,4 +11,17 @@ $(document).ready(function() {
             $("#galleryForm").submit();
         }
     });
+    $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: 200
+    });
+    setTimeout(function() {
+        $('.grid').masonry({
+            itemSelector: '.grid-item',
+            columnWidth: 200
+        });
+    }, 1500);
+    $(".grid-item").on("mouseover", function() {
+
+    });
 });

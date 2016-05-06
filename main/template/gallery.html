@@ -10,6 +10,7 @@
 <link rel="stylesheet" media="screen and (min-width: 900px)" href="static/css/mq_900-plus.css">
 <script type="text/javascript" src="static/js/jquery.js"></script>
 <script type="text/javascript" src="static/js/common.js"></script>
+<script type="text/javascript" src="static/js/masonry.js"></script>
 <script type="text/javascript" src="static/js/gallery.js"></script>
 </head>
 <body>
@@ -50,30 +51,24 @@
 			</div>
 		</form>
 	</section>
-	{{ $counter = 1; }}
-	{{range $element := .Data.Files}}
-		{{if eq ($counter%3) 1 }}
-			<div class="flex-container">
-		{{end}}
-		{{if eq $element.Extension "txt" }}
-				<div class="flex-item">
-					<object type="text/html" class="uploadedFiles" data="/download?fileName={{print $element.Name "." $element.Extension}}" >
-					</object>
-				</div>
-		{{else}}
-				<div class="flex-item">
-					<img class="uploadedFiles" src="/download?fileName={{print $element.Name "." $element.Extension}}" height="50" width="50"/>
-				</div>
-		{{end}}
-				<!-- {{$element.Name}}-->
-		{{ $counter++; }}
-		{{if eq ($counter%3) 0 }}
+	<div class="grid">
+		{{range $element := .Data.Files}}
+			<div class="grid-item">
+			{{if eq $element.Extension "txt" }}
+					<label>
+						<object class="txtFile" width="300" height="300" type="text/html" data="/download?fileName={{print $element.Name "." $element.Extension}}" border="1" >
+						</object>
+					</label>
+			{{else}}
+					<img class="image" src="/download?fileName={{print $element.Name "." $element.Extension}}" height="50" width="50"/>
+			{{end}}
+				<p class="filename">{{$element.Name}}</p>
 			</div>
 		{{end}}
-	{{end}}
-	<footer>
-		<p>Copyright &copy; 2016 - Website created by A+ development team.</p>
-	</footer>
+	</div>
+<footer>
+<p>Copyright &copy; 2016 - Website created by A+ development team.</p>
+</footer>
 
 </body>
 </html>

@@ -322,3 +322,23 @@ footer p {
 .content1 {
 	height: auto !important;
 }
+.grid {
+	padding: 5%;
+}
+.grid-item {
+	width: 300px;
+}
+.grid .grid-item {
+	margin-bottom: 4%;
+}
+.txtFile {
+	width: 100%;
+}
+.image {
+	display: block;
+	margin: 0;
+	max-width: 100%;
+}
+.filename {
+	text-align: center;
+}
