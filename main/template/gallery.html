@@ -32,7 +32,7 @@
 			{{end}}
 		</ul>
 	</header>
-	<section class="content">
+	<section class="content content1">
 		<form action="" id="galleryForm" method="post" enctype="multipart/form-data">
 			<div class="element text_header">Gallery</div>
 			<div class="row errorMessage" style="display:none">
@@ -48,30 +48,29 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				{{range $element := .Data.Files}}
-					{{if eq $element.Extension "txt" }}
-					<object width="300" height="300" type="text/html" data="/download?fileName={{print $element.Name "." $element.Extension}}" border="1" >
-					</object>
-					{{else}}
-						<img src="/download?fileName={{print $element.Name "." $element.Extension}}" height="50" width="50"/>
-					{{end}}
-					{{$element.Name}}
-				{{end}}
-			</div>
 		</form>
 	</section>
-	<ul class="nm">
-		{{if .Header.IsLoggedIn}}
-			<li><a href="/gallery">Gallery</a></li>
-			<li><a href="/profile">Profile</a></li>
-			<li><a href="logout">Logout</a></li>
-		{{else}}
-			<li><a href="/login">Login</a></li>
-			<li><a href="/signup">Signup</a></li>
+	{{ $counter = 1; }}
+	{{range $element := .Data.Files}}
+		{{if eq ($counter%3) 1 }}
+			<div class="flex-container">
 		{{end}}
-	</ul>
-
+		{{if eq $element.Extension "txt" }}
+				<div class="flex-item">
+					<object type="text/html" class="uploadedFiles" data="/download?fileName={{print $element.Name "." $element.Extension}}" >
+					</object>
+				</div>
+		{{else}}
+				<div class="flex-item">
+					<img class="uploadedFiles" src="/download?fileName={{print $element.Name "." $element.Extension}}" height="50" width="50"/>
+				</div>
+		{{end}}
+				<!-- {{$element.Name}}-->
+		{{ $counter++; }}
+		{{if eq ($counter%3) 0 }}
+			</div>
+		{{end}}
+	{{end}}
 	<footer>
 		<p>Copyright &copy; 2016 - Website created by A+ development team.</p>
 	</footer>

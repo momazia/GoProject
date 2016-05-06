@@ -91,3 +91,10 @@ footer {
     height: 140px;
 }
 
+.flex-container {
+    flex-direction: row;
+}
+.uploadedFiles {
+    width: 200px;
+    height: 200px;
+}

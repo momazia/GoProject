@@ -301,3 +301,24 @@ footer p {
 	flex-direction: column;
 	display: flex;
 }
+
+.flex-container {
+	width: inherit;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid black;
+}
+
+.flex-item {
+	margin: 20px;
+	align-self: center;
+}
+.uploadedFiles {
+	width: 250px;
+}
+.content1 {
+	height: auto !important;
+}

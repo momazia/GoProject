@@ -29,3 +29,14 @@ header {
 #items {
     flex-direction: row;
 }
+
+.flex-container {
+    flex-direction: row;
+}
+.uploadedFiles {
+    width: 400px;
+    height: 300px;
+}
+.flex-item {
+    width: 30%;
+}
