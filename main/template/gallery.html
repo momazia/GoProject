@@ -56,11 +56,11 @@
 			<div class="grid-item">
 			{{if eq $element.Extension "txt" }}
 					<label>
-						<object class="txtFile" width="300" height="300" type="text/html" data="/download?fileName={{print $element.Name "." $element.Extension}}" border="1" >
+						<object class="txtFile" type="text/html" data="/download?fileName={{print $element.Name "." $element.Extension}}" border="1" >
 						</object>
 					</label>
 			{{else}}
-					<img class="image" src="/download?fileName={{print $element.Name "." $element.Extension}}" height="50" width="50"/>
+					<img class="image" src="/download?fileName={{print $element.Name "." $element.Extension}}"/>
 			{{end}}
 				<p class="filename">{{$element.Name}}</p>
 			</div>

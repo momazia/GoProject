@@ -21,7 +21,4 @@ $(document).ready(function() {
             columnWidth: 200
         });
     }, 1500);
-    $(".grid-item").on("mouseover", function() {
-
-    });
 });
