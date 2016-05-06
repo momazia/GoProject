@@ -88,7 +88,7 @@ function validateFileFormat(object) {
     if (value > 0) {
         var fileName = document.getElementById("file").files[0].name;
         var ext = fileName.match(/\.(.+)$/)[1];
-        if (ext == "jpeg" || ext == "jpg" || ext == "png") {
+        if (ext == "jpeg" || ext == "jpg" || ext == "png" || ext == "txt") {
             removeError();
         } else {
             showError("This is not an allowed file type.");
