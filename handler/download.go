@@ -14,6 +14,7 @@ func DownloadHandler(res http.ResponseWriter, req *http.Request) {
 	rc, err := storage.Retrieve(req, session.GetUser(req).Email, fileName)
 	log.LogErrorWithMsg("Cannot retrieve the file name given", err)
 	if err == nil {
+		res.Header().Add("content-type", rc.ContentType())
 		io.Copy(res, rc)
 		defer rc.Close()
 	}
