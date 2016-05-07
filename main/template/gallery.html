@@ -56,11 +56,16 @@
 			<div class="grid-item">
 			{{if eq $element.Extension "txt" }}
 					<label>
+						<a download={{$element.Name}} href="/download?fileName={{print $element.Name "." $element.Extension}}" title="Click to Download">
 						<object class="txtFile" type="text/html" data="/download?fileName={{print $element.Name "." $element.Extension}}" border="1" >
 						</object>
+						Download
+						</a>
 					</label>
 			{{else}}
+				<a download={{$element.Name}} href="/download?fileName={{print $element.Name "." $element.Extension}}" title="Click on Image to Download">
 					<img class="image" src="/download?fileName={{print $element.Name "." $element.Extension}}"/>
+				</a>
 			{{end}}
 				<p class="filename">{{$element.Name}}</p>
 			</div>
