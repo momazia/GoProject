@@ -10,4 +10,5 @@ const (
 	URL_PROFILE               string = "/profile"
 	URL_GALLERY               string = "/gallery"
 	URL_DOWNLOAD              string = "/download"
+	URL_DOWNLOAD_GIPHY        string = "/giphy"
 )
