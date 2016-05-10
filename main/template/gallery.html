@@ -34,7 +34,7 @@
 		</ul>
 	</header>
 	<section class="content content1">
-		<form action="" id="galleryForm" method="post" enctype="multipart/form-data">
+		<form action="/gallery" id="galleryForm" method="POST" enctype="multipart/form-data">
 			<div class="element text_header">Gallery</div>
 			<div class="row errorMessage" style="display:none">
 			</div>
@@ -68,6 +68,11 @@
 				</a>
 			{{end}}
 				<p class="filename">{{$element.Name}}</p>
+			</div>
+		{{end}}
+		{{if .Data.GiphyName}}
+			<div class="grid-item">
+				<img class="image" src="/giphy?name={{.Data.GiphyName}}"/>
 			</div>
 		{{end}}
 	</div>

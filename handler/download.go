@@ -40,8 +40,8 @@ func DownloadHandler(res http.ResponseWriter, req *http.Request) {
 }
 
 // Handler for downloading GIF from Giphy api
-func DownloadGiphy(res http.ResponseWriter, req *http.Request) {
-
+func DownloadGiphyHandler(res http.ResponseWriter, req *http.Request) {
+	log.Println("DownloadGiphy Handler...")
 	// Calling the API
 	name := req.FormValue("name")
 	c := appengine.NewContext(req)

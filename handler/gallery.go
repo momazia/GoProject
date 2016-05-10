@@ -10,7 +10,8 @@ import (
 )
 
 type GalleryTemp struct {
-	Files []File
+	Files     []File
+	GiphyName string
 }
 
 type File struct {
@@ -20,9 +21,14 @@ type File struct {
 
 // Gallery handler
 func GalleryHandler(res http.ResponseWriter, req *http.Request) {
-
+	log.Println("GalleryHandler...")
 	username := session.GetUser(req).Email
-
+	giphyName := ""
+	log.Println("req.Method:" + req.Method)
+	_, header, err := req.FormFile("file")
+	if header != nil {
+		log.Println("header.Filename:" + header.Filename)
+	}
 	if req.Method == "POST" {
 		file, header, err := req.FormFile("file")
 		log.LogErrorWithMsg("Cannot read the file from the request", err)
@@ -30,6 +36,8 @@ func GalleryHandler(res http.ResponseWriter, req *http.Request) {
 			err = storage.Store(req, username, header.Filename, file)
 			log.LogErrorWithMsg("Cannot store the uploaded file", err)
 		}
+		giphyName = header.Filename
+		log.Println("giphyName:" + giphyName)
 	}
 	//Parsing the template
 	tpl := template.Must(template.ParseFiles("template/gallery.html"))
@@ -39,9 +47,9 @@ func GalleryHandler(res http.ResponseWriter, req *http.Request) {
 	log.LogErrorWithMsg("Cannot get user's list of files", err)
 
 	files := createFiles(fileList)
-
 	gt := GalleryTemp{
-		Files: files,
+		GiphyName: getFileName(giphyName),
+		Files:     files,
 	}
 
 	err = tpl.Execute(res, GetAPlusTemplateHeader(req, gt))
@@ -56,4 +64,10 @@ func createFiles(fileList []string) []File {
 		files = append(files, File{Name: strings.Join(str[:len(str)-1], "."), Extension: str[len(str)-1]})
 	}
 	return files
+}
+
+// Removes extension from the file name
+func getFileName(fileName string) string {
+	str := strings.Split(fileName, ".")
+	return strings.Join(str[:len(str)-1], ".")
 }
