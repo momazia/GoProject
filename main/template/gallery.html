@@ -50,6 +50,12 @@
 				</div>
 			</div>
 		</form>
+		{{if .Data.GiphyName}}
+			<div id="giphy" class="giphy">
+				<img class="giphyImage" src="/giphy?name={{.Data.GiphyName}}"/>
+				<label>Similar GIF</label>
+			</div>
+		{{end}}
 	</section>
 	<div class="grid">
 		{{range $element := .Data.Files}}
@@ -68,11 +74,6 @@
 				</a>
 			{{end}}
 				<p class="filename">{{$element.Name}}</p>
-			</div>
-		{{end}}
-		{{if .Data.GiphyName}}
-			<div class="grid-item">
-				<img class="image" src="/giphy?name={{.Data.GiphyName}}"/>
 			</div>
 		{{end}}
 	</div>

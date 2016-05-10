@@ -101,3 +101,14 @@ footer {
 .grid-item {
     width: 90%;
 }
+.content1 {
+    flex-direction: column;
+}
+.giphy {
+    width: 50%;
+    margin: auto;
+    margin-top: 40px;
+}
+.content1 form {
+    width: inherit;
+}

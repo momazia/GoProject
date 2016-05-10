@@ -43,3 +43,10 @@ header {
 .grid-item {
     width: 300px;
 }
+.giphy {
+    margin: 40px 40px 0 0;
+    width: 25%;
+}
+.content1 {
+    flex-direction: row;
+}
